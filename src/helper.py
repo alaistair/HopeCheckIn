@@ -1,13 +1,12 @@
 import numpy as np
 import pandas as pd
 import streamlit as st
-import s3fs
 import csv
 
-fs = s3fs.S3FileSystem(anon=False, 
-                       key=st.secrets["AWS_ACCESS_KEY_ID"], 
-                       secret=st.secrets["AWS_SECRET_ACCESS_KEY"])
-
+#import s3fs
+#fs = s3fs.S3FileSystem(anon=False, 
+#                       key=st.secrets["AWS_ACCESS_KEY_ID"], 
+#                      secret=st.secrets["AWS_SECRET_ACCESS_KEY"])
 
 #for bucket in s3.buckets.all():
 #    st.write(bucket.name)

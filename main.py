@@ -25,15 +25,9 @@ def main():
 
     #df_people = src.load_table(DATA_PATH + 'all_people_directory.csv')
     s3 = boto3.client('s3')
-    #obj = s3.get_object(Bucket="s3://hope-bucket/all_people_directory.csv", Key='key')
-
 
     df_people = src.load_table("s3://hope-bucket/all_people_directory.csv")
-    st.write(df_people)
-    #src.reset_all_people_directory(DATA_PATH, 'all_people_directory.csv')
-    #st.stop()
-
-    #st.write(df_people.astype(str))
+    #st.write(df_people)
 
     lastname = st.text_input("Please enter your last name", "", key = "lastname")
     families = src.search_families(df_people, lastname)
