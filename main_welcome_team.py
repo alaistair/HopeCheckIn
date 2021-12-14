@@ -16,7 +16,7 @@ def main():
 
     # Run the autorefresh about every 2000 milliseconds (2 seconds) and stop
     # after it's been refreshed 100 times.
-    #st_autorefresh(interval=2000, limit=1800, key="counter")    
+    st_autorefresh(interval=2000, limit=1800, key="counter")    
 
     df_people = src.load_table_no_cache("s3://hope-bucket/all_people_directory.csv")
     df_checked_in = df_people[pd.to_datetime(df_people["Checked In"]) >= pd.to_datetime("01/01/2020 12:00:00 PM", format="%d/%m/%Y %I:%M:%S %p")]
