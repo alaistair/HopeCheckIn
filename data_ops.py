@@ -1,11 +1,12 @@
 import pandas as pd
 import boto3, os
 import src as helper
+import streamlit as st
 
 s3 = boto3.resource(
     service_name='s3',
     region_name='ap-southeast-2',
-    aws_access_key_id='',
+    aws_access_key_id=st.secrets[''],
     aws_secret_access_key=''
 )
 

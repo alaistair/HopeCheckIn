@@ -7,6 +7,16 @@ from datetime import datetime
 from pandas.util import hash_pandas_object
 
 
+import boto3
+s3 = boto3.resource(
+    service_name='s3',
+    region_name=st.secrets["region_name"],
+    aws_access_key_id=st.secrets["AWS_ACCESS_KEY_ID"],
+    aws_secret_access_key=st.secrets["AWS_SECRET_ACCESS_KEY"]
+)
+
+
+
 def main():
     PATH = str(os.path.realpath('..')) + '/HopeCheckIn/'
     DATA_PATH = PATH + 'data/'
@@ -14,8 +24,12 @@ def main():
     st.title("Hope Check in")
 
     #df_people = src.load_table(DATA_PATH + 'all_people_directory.csv')
+    s3 = boto3.client('s3')
+    #obj = s3.get_object(Bucket="s3://hope-bucket/all_people_directory.csv", Key='key')
+
 
     df_people = src.load_table("s3://hope-bucket/all_people_directory.csv")
+    st.write(df_people)
     #src.reset_all_people_directory(DATA_PATH, 'all_people_directory.csv')
     #st.stop()
 

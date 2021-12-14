@@ -4,7 +4,15 @@ import streamlit as st
 import s3fs
 import csv
 
-fs = s3fs.S3FileSystem(anon=False)
+fs = s3fs.S3FileSystem(anon=False, 
+                       key=st.secrets["AWS_ACCESS_KEY_ID"], 
+                       secret=st.secrets["AWS_SECRET_ACCESS_KEY"])
+
+
+#for bucket in s3.buckets.all():
+#    st.write(bucket.name)
+
+
 
 @st.cache(allow_output_mutation=True)
 def load_table(filename):
