@@ -9,6 +9,7 @@ brother-ql = "*"
 boto3 = "*"
 streamlit-autorefresh = "*"
 s3fs = "*"
+bokeh = "~=2.4.1"
 
 [dev-packages]
 
