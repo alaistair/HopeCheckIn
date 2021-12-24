@@ -56,8 +56,14 @@ def main():
             # person1_container: ["Person name", person1_checkbox]
             for person_container in family_container:
                 for content in person_container:
-                    content.write(" ")
-
+                    try:
+                        content.write(" ")
+                    except:
+                        for widget in content:
+                            try:
+                                widget.write(" ")
+                            except:
+                                pass
 
 
     if 'newcomer' not in st.session_state:
