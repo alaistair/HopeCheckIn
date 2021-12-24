@@ -53,14 +53,15 @@ def write_families(df_people, lastname, family_container_list):
     families = search_families(df_people, lastname)
     for family in families:
         family_container = []
-        family_container_list.append(family_container)
 
         left, _, right = st.columns(3)
         with left:
             family_text = st.empty()
-            left.write("##### People in this family")
+            family_text.write("##### People in this family")
 
-        #my_family = right.button("This is my family", key=hash_pandas_object(family))
+        family_container.append(family_text)
+        family_container_list.append(family_container)
+
         display_family(family, df_people, family_container)
         st.write("--------")
 
