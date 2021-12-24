@@ -30,7 +30,7 @@ def main():
     </style> """, unsafe_allow_html=True)
 
     left_padding, logo, right_padding = st.columns(3)
-    image = Image.open(DATA_PATH + "Hope-Logo-White.png")
+    image = Image.open("data/Hope-Logo-White.png")
     left_padding.write("")
     logo.image(image)
     right_padding.write("")
