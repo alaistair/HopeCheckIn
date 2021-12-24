@@ -46,8 +46,9 @@ def main():
 
     if families and st.button('Finished checking in'):
         check_in_label.write(" ")
-        lastname_input.write("## Welcome to Hope!")
+        lastname_input.write(" ")
         lastname = ""
+        st.write("## Welcome to Hope!")
         
         for family_container in family_container_list:
             # family_container_list: [[family_text, [family1_checkbox]], [family_text, [family2_checkbox]], ...]
