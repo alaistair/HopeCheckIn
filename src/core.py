@@ -67,7 +67,6 @@ def write_families(df_people, lastname, family_container_list):
 
     return families, family_container_list
 
-
 def add_newcomer(df_people):
     st.write("### Newcomer details")
     lastname = st.text_input("Last name", key = "newcomer_lastname")
@@ -95,7 +94,6 @@ def add_row(DATA_PATH, table, filename):
     except Exception:
         print('Error writing: ' + TABLE_PATH)
     return 0
-
 
 def create_label(member_ID, name, PATH):
     # test: brother_ql print -l 29x90 temp.png

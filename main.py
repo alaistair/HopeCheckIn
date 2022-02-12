@@ -44,11 +44,23 @@ def main():
     family_container_list = []
     families, family_container_list = src.write_families(df_people, lastname, family_container_list)
 
-    if families and st.button('Finished checking in'):
+    finished_button = st.empty()
+
+    newcomer_button = st.empty()
+    if 'newcomer' not in st.session_state:
+       st.session_state.newcomer = 0
+    if st.session_state.newcomer == 0:
+        st.session_state.newcomer = newcomer_button.button("New to Hope?")
+
+    if families and finished_button.button('Finished checking in'):
         check_in_label.write(" ")
         lastname_input.write(" ")
         lastname = ""
+        finished_button.empty()
+
         st.write("## Welcome to Hope!")
+        st.write("You can close this window now")
+        
         
         for family_container in family_container_list:
             # family_container_list: [[family_text, [family1_checkbox]], [family_text, [family2_checkbox]], ...]
@@ -58,14 +70,9 @@ def main():
             for person_container in family_container[1:]:
                 for content in person_container:
                     content.write(" ")
+        newcomer_button.empty()
 
-
-    if 'newcomer' not in st.session_state:
-       st.session_state.newcomer = 0
-    if st.session_state.newcomer == 0:
-        st.session_state.newcomer = st.button("New to Hope?")
     if st.session_state.newcomer:
-
         st.write("### Newcomer details")
         lastname = st.text_input("Last name", key = "newcomer_lastname")
         firstname = st.text_input("First name", key = "newcomer_firstname")
@@ -82,7 +89,6 @@ def main():
                                    "Checked In": datetime.now(tz=None),
                                    "Printed": 0},
                                 index=[0])
-            #st.write(df_new)
             df_people = df_people.append(df_new)
         #done = st.button("Done")
 
